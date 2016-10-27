@@ -5,6 +5,8 @@ function Airport() {
 }
 
 Airport.prototype.land = function(plane) {
+  if(this.weather.isStormy()){throw new Error("Can't land plane: stormy");
+}
   if(this.planes.length >= this.capacity){
     throw new Error("Unable to land, airport full");
   }
@@ -19,8 +21,6 @@ Airport.prototype.takeoff = function(plane) {
   }
 };
 
-
-
 function Plane() {
 
 }
@@ -32,14 +32,3 @@ function Weather() {
     }
   };
 }
-
-
-
-// Weather.prototype.isStormy = function () {
-//   return false;
-// };
-//
-//
-// this.changeName = function (name) {
-//         this.lastName = name;
-//     };
