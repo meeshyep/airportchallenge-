@@ -13,19 +13,19 @@ describe('airport ',function(){
     // weather = false
   });
 
-  it('can land a plane', function(){
+  it('Can land a plane', function(){
     airport.land(plane);
     expect(airport.planes).toContain(plane);
   });
 
-  it('can instruct a plane to take off', function(){
+  it('Can instruct a plane to take off', function(){
     spyOn(airport.weather, 'isStormy').and.returnValue(false);
     airport.land(plane);
     airport.takeoff(plane);
     expect(airport.planes).toEqual([]);
   });
 
-  it('prevents takeoff when weather is stormy', function() {
+  it('Prevents takeoff when weather is stormy', function() {
     spyOn(airport.weather, 'isStormy').and.returnValue(true);
     airport.land(plane);
     expect(function(){
@@ -33,7 +33,7 @@ describe('airport ',function(){
     }).toThrowError("Can't take off: stormy");
   });
 
-  it('prevent landing when the airport is full', function(){
+  it('Prevent landing when the airport is full', function(){
     airport.land(plane);
     airport.land(plane);
     airport.land(plane);
@@ -42,7 +42,7 @@ describe('airport ',function(){
     }).toThrowError("Unable to land, airport full");
   });
 
-  it('allow default capacity to be changed as required', function(){
+  it('Allow default capacity to be changed as required', function(){
     airport.capacity = 5;
     expect(airport.capacity).toEqual(5);
   });
